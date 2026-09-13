@@ -116,25 +116,6 @@ I care about:
 
 ---
 
-## GitHub Activity
-
-<p align="center">
-  <img height="165" src="https://github-stats-extended.vercel.app/api?username=Shantodotdev&show_icons=true&theme=github_dark&hide_border=true&count_private=true" alt="Shantodotdev GitHub stats" />
-  <a href="https://github-stats-extended.vercel.app/api/top-langs/?username=Shantodotdev&layout=compact&theme=github_dark&hide_border=true">
-    <img height="165" src="https://github-stats-extended.vercel.app/api/top-langs/?username=Shantodotdev&layout=compact&theme=github_dark&hide_border=true" alt="Shantodotdev top languages" />
-  </a>
-</p>
-
-<p align="center">
-  <strong>Most Used Programming Languages List Status:</strong> ✅ Added
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=Shantodotdev&theme=github-dark-blue&hide_border=true" alt="Shantodotdev GitHub streak" />
-</p>
-
----
-
 ## Let's Build
 
 I like working with founders and teams who need software that can actually run a business: dashboards, workflows, AI systems, operational tools, SaaS platforms, and products that survive past the first demo.

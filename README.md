@@ -119,9 +119,9 @@ I care about:
 ## GitHub Activity
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=Shantodotdev&show_icons=true&theme=github_dark&hide_border=true&count_private=true" alt="Shantodotdev GitHub stats" />
-  <a href="https://github-readme-stats.vercel.app/api/top-langs/?username=Shantodotdev&layout=compact&theme=github_dark&hide_border=true">
-    <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Shantodotdev&layout=compact&theme=github_dark&hide_border=true" alt="Shantodotdev top languages" />
+  <img height="165" src="https://github-stats-extended.vercel.app/api?username=Shantodotdev&show_icons=true&theme=github_dark&hide_border=true&count_private=true" alt="Shantodotdev GitHub stats" />
+  <a href="https://github-stats-extended.vercel.app/api/top-langs/?username=Shantodotdev&layout=compact&theme=github_dark&hide_border=true">
+    <img height="165" src="https://github-stats-extended.vercel.app/api/top-langs/?username=Shantodotdev&layout=compact&theme=github_dark&hide_border=true" alt="Shantodotdev top languages" />
   </a>
 </p>
 

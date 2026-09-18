@@ -1,123 +1,133 @@
 <h1 align="center">Khalilur Rahman Shanto</h1>
 
 <p align="center">
-  <strong>Full-stack Software Developer building SaaS, AI products, and enterprise management systems.</strong>
+  <strong>Full-Stack Software Engineer</strong>
 </p>
 
 <p align="center">
-  I turn messy business workflows into fast, usable software: CRMs, ERPs, POS systems, dashboards,
-  automation tools, AI assistants, and production web apps.
+  Building web products, backend systems, developer tools, and local-first software.
 </p>
 
 <p align="center">
-  <a href="https://krshanto.com">Portfolio</a> -
-  <a href="https://www.linkedin.com/in/krshanto/">LinkedIn</a> -
-  <a href="https://github.com/Shantodotdev">GitHub</a> -
+  <a href="https://shanto.avensyn.com">Portfolio</a> ·
+  <a href="https://www.linkedin.com/in/krshanto/">LinkedIn</a> ·
+  <a href="https://dev.to/shantodotdev">Dev.to</a> ·
+  <a href="https://avensyn.com">Avensyn</a> ·
   <a href="mailto:krshanto2005@gmail.com">Email</a>
 </p>
 
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=Shantodotdev&style=flat-square&color=0f172a" alt="Profile views" />
-  <img src="https://img.shields.io/badge/Based%20in-Dhaka,%20Bangladesh-0f172a?style=flat-square" alt="Based in Dhaka, Bangladesh" />
-  <img src="https://img.shields.io/badge/Focus-SaaS%20%26%20Enterprise%20Software-0f172a?style=flat-square" alt="SaaS and Enterprise Software" />
-</p>
+I am a self-taught software engineer from Dhaka, Bangladesh, focused on building production web applications and business systems.
 
----
+My background is in full-stack product development with TypeScript, React, Next.js, Node.js, and PostgreSQL. I am now going deeper into backend engineering, Rust, networking, real-time systems, infrastructure, and developer tooling.
 
-## What I Build
+Alongside my engineering work, I am building [Avensyn](https://avensyn.com) as a long-term technology business and sharing what I learn through open source and technical writing.
 
-I work best where product thinking and engineering meet.
+## Current Focus
 
-- **SaaS products** with authentication, roles, subscriptions, dashboards, documents, reporting, and admin workflows.
-- **Enterprise software** for operations, sales, inventory, finance, team management, offer generation, and workflow tracking.
-- **AI-enabled systems** using OpenAI, structured outputs, assistants, automation, and business-specific knowledge flows.
-- **Production web apps** with Next.js, React, TypeScript, Prisma, PostgreSQL, MySQL, Supabase, Redis, and Vercel.
-- **Client-facing platforms** that need clean UX, reliable backend logic, SEO, analytics, and maintainable architecture.
+- Building useful open-source tools and local-first applications
+- Developing stronger depth in Rust, backend systems, networking, and infrastructure
+- Learning through real projects instead of isolated technology demos
+- Writing clear, developer-friendly explanations of difficult engineering topics
 
-I am currently focused on building software for founders and businesses that need real products, not just pretty pages.
+## Open Source
 
----
+### Projects I Maintain
 
-## Selected Work
+#### [Black Sparrow](https://github.com/Shantodotdev/blacksparrow)
 
-| Project | What it is | Stack / Focus |
-| --- | --- | --- |
-| [Star Office](https://erp.levantit.click/) | CRM and offer management software for elevator, MEP, construction, and contracting teams. Handles clients, projects, inventory, pricing, offer letters, payments, expenses, vendors, employees, files, reports, realtime messages, and AI-assisted workflows. | Next.js, React, TypeScript, Prisma, PostgreSQL, Better Auth, Redis, Inngest, OpenAI, Pusher, React Email |
-| [Autoworx](https://autoworx.tech/) | Web-based software for automotive repair and restyling shops. Built around customers, vehicles, estimates, invoices, inventory, tasks, communication, payments, Google Calendar, Stripe, Twilio, Mailgun, and shop workflows. | Next.js, TypeScript, Prisma, MySQL, NextAuth, Stripe, Twilio, Pusher, AWS S3, NestJS backend services |
-| mPOS | AI-powered inventory and point-of-sale software for local shops. Supports organizations, roles, invoices, products, barcode/QR flows, customer dues, loyalty programs, tax/discount configuration, receipts, reports, and admin controls. | Next.js, Prisma, PostgreSQL, OpenAI, JWT, Recharts, Nodemailer, Docker |
-| [Blood Sheba](https://www.bloodsheba.com/) | Blood donation platform connecting donors and people who need blood. | Next.js, React, Prisma, Vercel |
-| [GTD Media Production](https://www.gtdnet.online/) | Video production company website with service showcase, portfolio, contact flow, and an OpenAI-powered assistant. | Next.js, TypeScript, Tailwind CSS, Vercel AI SDK, OpenAI |
-| [iSchool](https://ischool-chi.vercel.app/) | School management demo with auth, dashboards, analytics, uploads, and role-based product structure. | Next.js 16, React 19, Prisma, UploadThing, Recharts |
-| [Moneymiter](https://github.com/Shantodotdev) | Smart finance tracking app for transactions, analytics, calendar views, reports, and multi-currency personal finance workflows. | React, TypeScript, Supabase, React Query, Recharts |
-| [BWKD](https://bwkd.org) | Website and school-style management experience for Bangladesh Wadokai Karate Do. | Next.js, React, Supabase, shadcn/ui |
+A high-performance, local-first website crawler and 120-rule technical SEO audit engine written in Rust. It combines streaming HTML analysis, SQLite persistence, link-graph analysis, multi-format reports, and a native MCP server for AI agents.
 
----
+`Rust` `Axum` `Reqwest` `lol_html` `SQLite` `MCP` `petgraph`
 
-## Production Stack
+#### [Quran0](https://github.com/Shantodotdev/quran0)
 
-**Frontend**
+A mobile-first Quran reader focused on offline readability and learning-order progression. It includes generated and lazy-loaded Quran datasets, audio playback, Media Session integration, and PWA support.
 
-![TypeScript](https://img.shields.io/badge/TypeScript-0f172a?style=for-the-badge&logo=typescript)
-![React](https://img.shields.io/badge/React-0f172a?style=for-the-badge&logo=react)
-![Next.js](https://img.shields.io/badge/Next.js-0f172a?style=for-the-badge&logo=nextdotjs)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-0f172a?style=for-the-badge&logo=tailwindcss)
-![Radix UI](https://img.shields.io/badge/Radix%20UI-0f172a?style=for-the-badge&logo=radixui)
+`TanStack Start` `React` `TypeScript` `Zustand` `PWA` `Vitest`
 
-**Backend and Data**
+#### [Navio Player](https://github.com/Shantodotdev/navio-player)
 
-![Node.js](https://img.shields.io/badge/Node.js-0f172a?style=for-the-badge&logo=nodedotjs)
-![NestJS](https://img.shields.io/badge/NestJS-0f172a?style=for-the-badge&logo=nestjs)
-![Prisma](https://img.shields.io/badge/Prisma-0f172a?style=for-the-badge&logo=prisma)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-0f172a?style=for-the-badge&logo=postgresql)
-![MySQL](https://img.shields.io/badge/MySQL-0f172a?style=for-the-badge&logo=mysql)
-![Redis](https://img.shields.io/badge/Redis-0f172a?style=for-the-badge&logo=redis)
-![Supabase](https://img.shields.io/badge/Supabase-0f172a?style=for-the-badge&logo=supabase)
+A local-first desktop media player and downloader built with Tauri and Rust. It includes an indexed local media library, HTTP range streaming, playlist management, verified media downloads, and an MCP interface for agent control.
 
-**AI, Automation, and Integrations**
+`Rust` `Tauri` `Axum` `SQLite` `TanStack Start` `React` `MCP`
 
-![OpenAI](https://img.shields.io/badge/OpenAI-0f172a?style=for-the-badge&logo=openai)
-![Vercel AI SDK](https://img.shields.io/badge/Vercel%20AI%20SDK-0f172a?style=for-the-badge&logo=vercel)
-![Inngest](https://img.shields.io/badge/Inngest-0f172a?style=for-the-badge)
-![Stripe](https://img.shields.io/badge/Stripe-0f172a?style=for-the-badge&logo=stripe)
-![Twilio](https://img.shields.io/badge/Twilio-0f172a?style=for-the-badge&logo=twilio)
-![Resend](https://img.shields.io/badge/Resend-0f172a?style=for-the-badge)
-![Pusher](https://img.shields.io/badge/Pusher-0f172a?style=for-the-badge&logo=pusher)
+### Contributions
 
-**Tools and Delivery**
+#### [NurUI](https://github.com/afsar-dev/Nurui)
 
-![Vercel](https://img.shields.io/badge/Vercel-0f172a?style=for-the-badge&logo=vercel)
-![Docker](https://img.shields.io/badge/Docker-0f172a?style=for-the-badge&logo=docker)
-![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-0f172a?style=for-the-badge&logo=githubactions)
-![AWS S3](https://img.shields.io/badge/AWS%20S3-0f172a?style=for-the-badge&logo=amazons3)
-![Notion](https://img.shields.io/badge/Notion-0f172a?style=for-the-badge&logo=notion)
+Contributed merged performance and security fixes to this React and Next.js component library. The work included cleaning up leaked global listeners and animation loops, reducing background CPU/GPU work, validating documentation slugs, and handling missing files safely.
 
----
+[Performance and lifecycle fixes](https://github.com/afsar-dev/Nurui/pull/188) · [Documentation route security fixes](https://github.com/afsar-dev/Nurui/pull/186)
 
-## How I Think About Software
+#### [Docora](https://github.com/StaticMania/docora)
 
-Good software should feel calm from the outside and disciplined from the inside.
+Contributed the merged `search-docs` tool for Docora's built-in MCP server. I also have improvements under review for non-interactive CLI scaffolding, structured navigation, and cleaner Markdown output for AI clients.
 
-I care about:
+[MCP documentation search](https://github.com/StaticMania/docora/pull/4) · [All Docora contributions](https://github.com/StaticMania/docora/pulls?q=is%3Apr+author%3AShantodotdev)
 
-- turning real business operations into clear data models and workflows
-- shipping useful MVPs without trapping the product in throwaway code
-- designing interfaces that teams can use every day without getting lost
-- keeping auth, permissions, files, reports, integrations, and admin flows understandable
-- using AI where it improves the product, not where it only makes the pitch sound louder
+## Selected Production Work
 
----
+These are selected client systems where I worked across product flows, data modeling, application architecture, integrations, and production delivery.
 
-## Experience Snapshot
+| Project                                    | What I Built                                                                                                                                                                                                                 | Engineering Focus                                          |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| [Star Office](https://erp.levantit.click/) | CRM and offer-management software for elevator, MEP, construction, and contracting teams. It covers customers, projects, inventory, pricing, documents, payments, reporting, real-time messaging, and AI-assisted workflows. | Next.js, TypeScript, PostgreSQL, Redis, Inngest, OpenAI    |
+| [Autoworx](https://autoworx.tech/)         | Operations software for automotive repair and restyling shops, covering customers, vehicles, estimates, invoices, inventory, scheduling, communication, and payments.                                                        | Next.js, TypeScript, MySQL, Stripe, Twilio, AWS S3, NestJS |
+| [Khatayon](https://khatayon.com/)          | AI-powered inventory and point-of-sale software for local businesses, with organization roles, products, barcode flows, invoices, customer dues, loyalty, receipts, and reporting.                                           | Next.js, PostgreSQL, OpenAI, Docker                        |
 
-- Co-founder and CTO at **Levant IT Solution**.
-- Full-stack developer with **5+ years** of experience building production web apps and AI-powered systems.
-- Built and led development across **10+ client and product projects** for businesses in multiple countries.
-- Worked on SaaS, enterprise management systems, POS/inventory products, automotive software, education tools, nonprofit platforms, and AI assistants.
+## Experience
 
----
+### Founder & Software Engineer · [Avensyn](https://avensyn.com)
 
-## Let's Build
+`Jul 2026 – Present` · Self-employed
 
-I like working with founders and teams who need software that can actually run a business: dashboards, workflows, AI systems, operational tools, SaaS platforms, and products that survive past the first demo.
+Building Avensyn while developing software products, developer tools, and open-source systems across full-stack, backend, Rust, and AI.
 
-If that sounds like the kind of thing you are building, reach me on [LinkedIn](https://www.linkedin.com/in/krshanto/) or through [krshanto.com](https://krshanto.com).
+### Full-Stack Software Engineer · Levant IT Solution
+
+`Dec 2021 – Jun 2026` · Part-time
+
+Led architecture and end-to-end delivery for SaaS, AI, ERP, and business-management products, from planning through production.
+
+### Freelance Software Engineer · Independent
+
+`Sep 2020 – Jun 2026` · Freelance
+
+Delivered production e-commerce, service, and operations software for clients across multiple industries.
+
+### Software Engineer · Star Elevator & Power Engineering
+
+`Sep 2025 – Feb 2026` · Contract
+
+Built a centralized operations platform connecting customers, projects, quotations, inventory, finance, files, reporting, and AI-assisted workflows.
+
+### Lead Developer · [Autoworx](https://autoworx.tech/)
+
+`Dec 2023 – Mar 2025` · Full-time
+
+Led development of a vehicle-service platform covering CRM, estimates, invoicing, payments, scheduling, inventory, and reporting.
+
+## Technical Areas
+
+- **Frontend:** TypeScript, React, Next.js, TanStack, Tailwind CSS
+- **Backend:** Node.js, Axum, Prisma
+- **Databases:** PostgreSQL, MySQL, SQLite, Redis, Supabase
+- **Systems & Desktop:** Rust, Tauri, async programming, networking, local-first architecture
+- **DevOps & Cloud:** Docker, GitHub Actions, AWS, Vercel, observability, deployment workflows
+- **AI & Automation:** LLM integrations, structured outputs, tool calling, MCP, automation workflows
+
+## Engineering Principles
+
+I care about software that is useful, understandable, and maintainable.
+
+- Start with the real problem and model it clearly
+- Prefer simple architecture until complexity is justified
+- Treat security, testing, observability, and deployment as part of the product
+- Use AI when it improves the software, not only the pitch
+- Learn abstractions, but also understand what happens underneath them
+
+## Writing and Contact
+
+I write about software engineering, backend systems, Rust, networking, real-time applications, infrastructure, open source, and lessons from projects I am actively building.
+
+Read my work on [Dev.to](https://dev.to/shantodotdev), follow me on [LinkedIn](https://www.linkedin.com/in/krshanto/), or visit [shanto.avensyn.com](https://shanto.avensyn.com).

@@ -16,6 +16,15 @@
   <a href="mailto:krshanto2005@gmail.com">Email</a>
 </p>
 
+<p align="center">
+  <img src="assets/stats.svg" alt="GitHub stats" width="49%" />
+  <img src="assets/languages.svg" alt="Most used languages" width="49%" />
+</p>
+
+<p align="center">
+  <img src="assets/streak.svg" alt="Contribution streak" width="49%" />
+</p>
+
 I am a self-taught software engineer from Dhaka, Bangladesh, focused on building production web applications and business systems.
 
 My background is in full-stack product development with TypeScript, React, Next.js, Node.js, and PostgreSQL. I am now going deeper into backend engineering, Rust, networking, real-time systems, infrastructure, and developer tooling.

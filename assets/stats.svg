@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="495" height="210" viewBox="0 0 495 210" role="img" aria-label="Shantodotdev GitHub stats">
+<title>Shantodotdev GitHub stats</title>
+<style>
+  :root{--bg:#ffffff;--border:#d0d7de;--title:#0969da;--text:#1f2328;--muted:#656d76;--accent:#0969da}
+  @media (prefers-color-scheme: dark){:root{--bg:#0d1117;--border:#30363d;--title:#58a6ff;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}}
+  text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+  .title{font-size:16px;font-weight:600;fill:var(--title)}
+  .label{font-size:13px;fill:var(--text)}
+  .value{font-size:13px;font-weight:600;fill:var(--text)}
+  .big{font-size:28px;font-weight:700;fill:var(--text)}
+  .sub{font-size:12px;fill:var(--muted)}
+  .name{font-size:13px;font-weight:600;fill:var(--accent)}
+</style>
+<rect x="0.5" y="0.5" width="494" height="209" rx="6" fill="var(--bg)" stroke="var(--border)"/>
+<text x="25" y="35" class="title">KR Shanto's GitHub Stats</text><text x="25" y="68" class="label">Total Stars Earned</text><text x="270" y="68" class="value">49</text>
+<text x="25" y="93" class="label">Total Commits</text><text x="270" y="93" class="value">14,447</text>
+<text x="25" y="118" class="label">Total PRs</text><text x="270" y="118" class="value">264</text>
+<text x="25" y="143" class="label">Total Issues</text><text x="270" y="143" class="value">89</text>
+<text x="25" y="168" class="label">Repositories (owned)</text><text x="270" y="168" class="value">160</text>
+<text x="25" y="193" class="label">Followers</text><text x="270" y="193" class="value">18</text>
+</svg>

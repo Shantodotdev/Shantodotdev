@@ -12,10 +12,10 @@
   .name{font-size:13px;font-weight:600;fill:var(--accent)}
 </style>
 <rect x="0.5" y="0.5" width="494" height="209" rx="6" fill="var(--bg)" stroke="var(--border)"/>
-<text x="25" y="35" class="title">KR Shanto's GitHub Stats</text><text x="25" y="68" class="label">Total Stars Earned</text><text x="270" y="68" class="value">49</text>
-<text x="25" y="93" class="label">Total Commits</text><text x="270" y="93" class="value">14,447</text>
-<text x="25" y="118" class="label">Total PRs</text><text x="270" y="118" class="value">264</text>
-<text x="25" y="143" class="label">Total Issues</text><text x="270" y="143" class="value">89</text>
-<text x="25" y="168" class="label">Repositories (owned)</text><text x="270" y="168" class="value">160</text>
+<text x="25" y="35" class="title">KR Shanto's GitHub Stats</text><text x="25" y="68" class="label">Total Stars Earned</text><text x="270" y="68" class="value">40</text>
+<text x="25" y="93" class="label">Total Commits</text><text x="270" y="93" class="value">14,448</text>
+<text x="25" y="118" class="label">Total PRs</text><text x="270" y="118" class="value">43</text>
+<text x="25" y="143" class="label">Total Issues</text><text x="270" y="143" class="value">19</text>
+<text x="25" y="168" class="label">Repositories (owned)</text><text x="270" y="168" class="value">81</text>
 <text x="25" y="193" class="label">Followers</text><text x="270" y="193" class="value">18</text>
 </svg>

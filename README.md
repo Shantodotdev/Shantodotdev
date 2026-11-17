@@ -74,11 +74,13 @@ I write about software engineering, backend systems, Rust, networking, real-time
 
 Read my work on [Dev.to](https://dev.to/shantodotdev), follow me on [LinkedIn](https://www.linkedin.com/in/krshanto/), or visit [shanto.avensyn.com](https://shanto.avensyn.com).
 
-<p align="center">
+<br />
+
+<p>
   <img src="assets/activity.svg" alt="Contribution activity" width="410" />
 </p>
 
-<p align="center">
+<p>
   <img src="assets/languages.svg" alt="Most used languages" width="410" />
 </p>
 

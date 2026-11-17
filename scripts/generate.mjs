@@ -134,11 +134,11 @@ function activity(days) {
 
 // ---------- svg ----------
 const STYLE = `
-  :root{--text:#1f2328;--muted:#59636e;--track:#d8dee4;--line:#d1d9e0;--c1:#1a7f37;--c2:#0969da;--c3:#bc4c00}
-  @media (prefers-color-scheme: dark){:root{--text:#f0f6fc;--muted:#9da7b3;--track:#2b3340;--line:#30363d;--c1:#3fb950;--c2:#58a6ff;--c3:#f0883e}}
+  :root{--text:#1f2328;--muted:#32393f;--track:#d8dee4;--line:#d1d9e0;--c1:#1a7f37;--c2:#0969da;--c3:#bc4c00}
+  @media (prefers-color-scheme: dark){:root{--text:#f0f6fc;--muted:#d0d7de;--track:#2b3340;--line:#30363d;--c1:#3fb950;--c2:#58a6ff;--c3:#f0883e}}
   text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif;text-rendering:geometricPrecision}
   .h{font-size:18px;font-weight:600;fill:var(--text)}
-  .sub{font-size:14px;fill:var(--muted)}
+  .sub{font-size:14px;font-weight:500;fill:var(--muted)}
   .lab{font-size:15px;font-weight:600;fill:var(--text)}
   .num{font-size:30px;font-weight:700;fill:var(--text)}
   .ring{font-size:28px;font-weight:700;fill:var(--text)}
@@ -177,8 +177,8 @@ function activitySvg(total, since, a) {
     `<text x="${cx}" y="${cy + 100}" text-anchor="middle" class="sub">${sub}</text>`;
   const pct = a.elapsed ? Math.round((a.activeYear / a.elapsed) * 100) : 0;
   const body =
-    `<text x="10" y="28" class="h">Contribution Activity</text>` +
-    `<text x="10" y="50" class="sub">${fmt(total)} contributions since ${since}</text>` +
+    `<text x="0" y="28" class="h">Contribution Activity</text>` +
+    `<text x="0" y="50" class="sub">${fmt(total)} contributions since ${since}</text>` +
     col(
       75,
       a.longest ? a.current / a.longest : 0,
@@ -241,7 +241,7 @@ function langsSvg(langs) {
     410,
     270,
     `${USER} most used languages`,
-    `<text x="10" y="28" class="h">Most Used Languages</text>${donut}${legend}`,
+    `<text x="0" y="28" class="h">Most Used Languages</text>${donut}${legend}`,
   );
 }
 

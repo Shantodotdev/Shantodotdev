@@ -1,21 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="495" height="210" viewBox="0 0 495 210" role="img" aria-label="Shantodotdev GitHub stats">
+<svg xmlns="http://www.w3.org/2000/svg" width="830" height="92" viewBox="0 0 830 92" role="img" aria-label="Shantodotdev GitHub stats">
 <title>Shantodotdev GitHub stats</title>
 <style>
-  :root{--bg:#ffffff;--border:#d0d7de;--title:#0969da;--text:#1f2328;--muted:#656d76;--accent:#0969da}
-  @media (prefers-color-scheme: dark){:root{--bg:#0d1117;--border:#30363d;--title:#58a6ff;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}}
-  text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-  .title{font-size:16px;font-weight:600;fill:var(--title)}
-  .label{font-size:13px;fill:var(--text)}
-  .value{font-size:13px;font-weight:600;fill:var(--text)}
-  .big{font-size:28px;font-weight:700;fill:var(--text)}
-  .sub{font-size:12px;fill:var(--muted)}
-  .name{font-size:13px;font-weight:600;fill:var(--accent)}
+  :root{--text:#1f2328;--muted:#59636e;--track:#d8dee4;--line:#d1d9e0;--c1:#1a7f37;--c2:#0969da;--c3:#bc4c00}
+  @media (prefers-color-scheme: dark){:root{--text:#f0f6fc;--muted:#9da7b3;--track:#2b3340;--line:#30363d;--c1:#3fb950;--c2:#58a6ff;--c3:#f0883e}}
+  text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif;text-rendering:geometricPrecision}
+  .h{font-size:18px;font-weight:600;fill:var(--text)}
+  .sub{font-size:14px;fill:var(--muted)}
+  .lab{font-size:15px;font-weight:600;fill:var(--text)}
+  .num{font-size:30px;font-weight:700;fill:var(--text)}
+  .ring{font-size:28px;font-weight:700;fill:var(--text)}
+  .leg{font-size:15px;fill:var(--text)}
 </style>
-<rect x="0.5" y="0.5" width="494" height="209" rx="6" fill="var(--bg)" stroke="var(--border)"/>
-<text x="25" y="35" class="title">KR Shanto's GitHub Stats</text><text x="25" y="68" class="label">Total Stars Earned</text><text x="270" y="68" class="value">40</text>
-<text x="25" y="93" class="label">Total Commits</text><text x="270" y="93" class="value">14,448</text>
-<text x="25" y="118" class="label">Total PRs</text><text x="270" y="118" class="value">43</text>
-<text x="25" y="143" class="label">Total Issues</text><text x="270" y="143" class="value">19</text>
-<text x="25" y="168" class="label">Repositories (owned)</text><text x="270" y="168" class="value">81</text>
-<text x="25" y="193" class="label">Followers</text><text x="270" y="193" class="value">18</text>
+<line x1="10" y1="1" x2="820" y2="1" stroke="var(--line)"/><line x1="10" y1="91" x2="820" y2="91" stroke="var(--line)"/><text x="69.16666666666667" y="45" text-anchor="middle" class="num">49</text><text x="69.16666666666667" y="70" text-anchor="middle" class="sub">Stars earned</text><text x="207.5" y="45" text-anchor="middle" class="num">14,449</text><text x="207.5" y="70" text-anchor="middle" class="sub">Commits</text><text x="345.83333333333337" y="45" text-anchor="middle" class="num">265</text><text x="345.83333333333337" y="70" text-anchor="middle" class="sub">Pull requests</text><text x="484.1666666666667" y="45" text-anchor="middle" class="num">89</text><text x="484.1666666666667" y="70" text-anchor="middle" class="sub">Issues</text><text x="622.5" y="45" text-anchor="middle" class="num">160</text><text x="622.5" y="70" text-anchor="middle" class="sub">Repositories</text><text x="760.8333333333334" y="45" text-anchor="middle" class="num">18</text><text x="760.8333333333334" y="70" text-anchor="middle" class="sub">Followers</text>
 </svg>

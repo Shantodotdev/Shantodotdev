@@ -1,4 +1,4 @@
-// Generates static SVG stat cards from the GitHub GraphQL API.
+// Generates static SVG charts from the GitHub GraphQL API.
 // Usage: GH_TOKEN=... GH_USER=name node scripts/generate.mjs [outDir]
 // No dependencies. Needs Node 18+.
 import { mkdir, writeFile } from "node:fs/promises";
@@ -38,6 +38,7 @@ const esc = (s) =>
     (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c],
   );
 const fmt = (n) => n.toLocaleString("en-US");
+const dayKey = (d) => d.toISOString().slice(0, 10);
 
 // ---------- data ----------
 async function fetchProfile() {
@@ -90,135 +91,172 @@ async function fetchContributions(createdAt) {
   return { commits, total, days };
 }
 
-function streaks(days) {
+function activity(days) {
   const dates = [...days.keys()].sort();
-  let longest = { len: 0, start: null, end: null };
-  let run = { len: 0, start: null };
+  let longest = 0;
+  let run = 0;
   for (const date of dates) {
-    if (days.get(date) > 0) {
-      if (run.len === 0) run.start = date;
-      run.len++;
-      if (run.len > longest.len)
-        longest = { len: run.len, start: run.start, end: date };
-    } else run = { len: 0, start: null };
+    run = days.get(date) > 0 ? run + 1 : 0;
+    longest = Math.max(longest, run);
   }
   // current streak: walk back from today; an empty today doesn't break it yet
-  const today = new Date().toISOString().slice(0, 10);
-  const d = new Date(today + "T00:00:00Z");
-  if (!(days.get(today) > 0)) d.setUTCDate(d.getUTCDate() - 1);
-  let cur = 0;
-  let curStart = null;
-  let curEnd = d.toISOString().slice(0, 10);
-  while (days.get(d.toISOString().slice(0, 10)) > 0) {
-    cur++;
-    curStart = d.toISOString().slice(0, 10);
+  const now = new Date();
+  const d = new Date(dayKey(now) + "T00:00:00Z");
+  if (!(days.get(dayKey(d)) > 0)) d.setUTCDate(d.getUTCDate() - 1);
+  let current = 0;
+  while (days.get(dayKey(d)) > 0) {
+    current++;
     d.setUTCDate(d.getUTCDate() - 1);
   }
+  const today = new Date(dayKey(now) + "T00:00:00Z");
+  const elapsed =
+    Math.floor(
+      (today - new Date(`${today.getUTCFullYear()}-01-01T00:00:00Z`)) /
+        86400000,
+    ) + 1;
+  let activeYear = 0;
+  let activeLast30 = 0;
+  for (let i = 0; i < elapsed; i++) {
+    const k = dayKey(new Date(today.getTime() - i * 86400000));
+    if (days.get(k) > 0) {
+      activeYear++;
+      if (i < 30) activeLast30++;
+    }
+  }
   return {
-    current: { len: cur, start: curStart, end: cur ? curEnd : null },
-    longest,
+    current,
+    longest: Math.max(longest, current),
+    activeYear,
+    elapsed,
+    activeLast30,
   };
 }
 
 // ---------- svg ----------
 const STYLE = `
-  :root{--bg:#ffffff;--border:#d0d7de;--title:#0969da;--text:#1f2328;--muted:#656d76;--accent:#0969da}
-  @media (prefers-color-scheme: dark){:root{--bg:#0d1117;--border:#30363d;--title:#58a6ff;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}}
-  text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-  .title{font-size:16px;font-weight:600;fill:var(--title)}
-  .label{font-size:13px;fill:var(--text)}
-  .value{font-size:13px;font-weight:600;fill:var(--text)}
-  .big{font-size:28px;font-weight:700;fill:var(--text)}
-  .sub{font-size:12px;fill:var(--muted)}
-  .name{font-size:13px;font-weight:600;fill:var(--accent)}
+  :root{--text:#1f2328;--muted:#59636e;--track:#d8dee4;--line:#d1d9e0;--c1:#1a7f37;--c2:#0969da;--c3:#bc4c00}
+  @media (prefers-color-scheme: dark){:root{--text:#f0f6fc;--muted:#9da7b3;--track:#2b3340;--line:#30363d;--c1:#3fb950;--c2:#58a6ff;--c3:#f0883e}}
+  text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif;text-rendering:geometricPrecision}
+  .h{font-size:18px;font-weight:600;fill:var(--text)}
+  .sub{font-size:14px;fill:var(--muted)}
+  .lab{font-size:15px;font-weight:600;fill:var(--text)}
+  .num{font-size:30px;font-weight:700;fill:var(--text)}
+  .ring{font-size:28px;font-weight:700;fill:var(--text)}
+  .leg{font-size:15px;fill:var(--text)}
 `;
 
-function card(w, h, title, body) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(title)}">
+const svg = (
+  w,
+  h,
+  title,
+  body,
+) => `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(title)}">
 <title>${esc(title)}</title>
 <style>${STYLE}</style>
-<rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" rx="6" fill="var(--bg)" stroke="var(--border)"/>
 ${body}
 </svg>
 `;
+
+function ring(cx, cy, r, frac, color) {
+  const c = 2 * Math.PI * r;
+  const f = Math.max(0, Math.min(1, frac));
+  return (
+    `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--track)" stroke-width="10"/>` +
+    (f > 0
+      ? `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(${color})" stroke-width="10" stroke-linecap="round" stroke-dasharray="${(c * f).toFixed(2)} ${c.toFixed(2)}" transform="rotate(-90 ${cx} ${cy})"/>`
+      : "")
+  );
 }
 
-function statsSvg(p, s) {
-  const rows = [
-    ["Total Stars Earned", s.stars],
-    ["Total Commits", s.commits],
-    ["Total PRs", p.pullRequests.totalCount],
-    ["Total Issues", p.issues.totalCount],
-    ["Repositories (owned)", s.repos],
-    ["Followers", p.followers.totalCount],
-  ];
+function activitySvg(total, since, a) {
+  const cy = 140;
+  const col = (cx, frac, color, big, label, sub) =>
+    ring(cx, cy, 46, frac, color) +
+    `<text x="${cx}" y="${cy + 10}" text-anchor="middle" class="ring">${big}</text>` +
+    `<text x="${cx}" y="${cy + 80}" text-anchor="middle" class="lab">${label}</text>` +
+    `<text x="${cx}" y="${cy + 100}" text-anchor="middle" class="sub">${sub}</text>`;
+  const pct = a.elapsed ? Math.round((a.activeYear / a.elapsed) * 100) : 0;
   const body =
-    `<text x="25" y="35" class="title">${esc(p.name || USER)}'s GitHub Stats</text>` +
-    rows
-      .map(
-        ([l, v], i) =>
-          `<text x="25" y="${68 + i * 25}" class="label">${l}</text><text x="270" y="${68 + i * 25}" class="value">${fmt(v)}</text>`,
-      )
-      .join("\n");
-  return card(495, 210, `${USER} GitHub stats`, body);
+    `<text x="10" y="28" class="h">Contribution Activity</text>` +
+    `<text x="10" y="50" class="sub">${fmt(total)} contributions since ${since}</text>` +
+    col(
+      75,
+      a.longest ? a.current / a.longest : 0,
+      "--c1",
+      a.current,
+      "Current streak",
+      `Best: ${a.longest} days`,
+    ) +
+    col(
+      205,
+      a.elapsed ? a.activeYear / a.elapsed : 0,
+      "--c2",
+      `${pct}%`,
+      "Active this year",
+      `${a.activeYear} of ${a.elapsed} days`,
+    ) +
+    col(
+      335,
+      a.activeLast30 / 30,
+      "--c3",
+      a.activeLast30,
+      "Last 30 days",
+      "days active",
+    );
+  return svg(410, 270, `${USER} contribution activity`, body);
 }
 
 function langsSvg(langs) {
   const total = langs.reduce((a, l) => a + l.size, 0) || 1;
   const top = langs.slice(0, 6);
-  const barX = 25,
-    barW = 445;
-  let x = barX;
-  let bar = `<clipPath id="r"><rect x="${barX}" y="52" width="${barW}" height="10" rx="5"/></clipPath><g clip-path="url(#r)">`;
-  for (const l of top) {
-    const w = (l.size / total) * barW;
-    bar += `<rect x="${x.toFixed(2)}" y="52" width="${w.toFixed(2)}" height="10" fill="${l.color}"/>`;
-    x += w;
+  const rest = total - top.reduce((a, l) => a + l.size, 0);
+  const segs =
+    rest > 0 ? [...top, { name: "Other", color: "#8b949e", size: rest }] : top;
+  const cx = 95,
+    cy = 150,
+    r = 62;
+  const c = 2 * Math.PI * r;
+  let offset = 0;
+  let donut = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--track)" stroke-width="24"/>`;
+  for (const s of segs) {
+    const len = (s.size / total) * c;
+    const gap = len > 6 ? 2 : 0;
+    donut += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.color}" stroke-width="24" stroke-dasharray="${(len - gap).toFixed(2)} ${(c - len + gap).toFixed(2)}" stroke-dashoffset="${(-offset).toFixed(2)}" transform="rotate(-90 ${cx} ${cy})"/>`;
+    offset += len;
   }
-  bar += `<rect x="${x.toFixed(2)}" y="52" width="${(barX + barW - x).toFixed(2)}" height="10" fill="#8b949e"/></g>`;
+  donut +=
+    `<text x="${cx}" y="${cy + 6}" text-anchor="middle" class="ring">${langs.length}</text>` +
+    `<text x="${cx}" y="${cy + 26}" text-anchor="middle" class="sub">languages</text>`;
   const legend = top
     .map((l, i) => {
-      const cx = 25 + (i % 2) * 225;
-      const cy = 90 + Math.floor(i / 2) * 26;
-      return `<circle cx="${cx + 5}" cy="${cy - 4}" r="5" fill="${l.color}"/><text x="${cx + 18}" y="${cy}" class="label">${esc(l.name)}</text><text x="${cx + 150}" y="${cy}" class="sub">${((l.size / total) * 100).toFixed(1)}%</text>`;
+      const y = 86 + i * 28;
+      return (
+        `<circle cx="200" cy="${y - 5}" r="6" fill="${l.color}"/>` +
+        `<text x="216" y="${y}" class="leg">${esc(l.name)}</text>` +
+        `<text x="400" y="${y}" text-anchor="end" class="sub">${((l.size / total) * 100).toFixed(1)}%</text>`
+      );
     })
-    .join("\n");
-  return card(
-    495,
-    210,
+    .join("");
+  return svg(
+    410,
+    270,
     `${USER} most used languages`,
-    `<text x="25" y="35" class="title">Most Used Languages</text>${bar}${legend}`,
+    `<text x="10" y="28" class="h">Most Used Languages</text>${donut}${legend}`,
   );
 }
 
-function streakSvg(total, st, createdAt) {
-  const range = (a, b) =>
-    a && b
-      ? `${a.slice(5).replace("-", "/")} – ${b.slice(5).replace("-", "/")}`
-      : "No active streak";
-  const col = (cx, big, label, sub) =>
-    `<text x="${cx}" y="95" text-anchor="middle" class="big">${fmt(big)}</text>
-<text x="${cx}" y="125" text-anchor="middle" class="name">${label}</text>
-<text x="${cx}" y="147" text-anchor="middle" class="sub">${esc(sub)}</text>`;
-  const since = new Date(createdAt).toISOString().slice(0, 10);
-  const body =
-    `<text x="25" y="35" class="title">Contribution Streak</text>` +
-    col(82, total, "Total Contributions", `${since.slice(0, 4)} – Present`) +
-    col(
-      247,
-      st.current.len,
-      "Current Streak",
-      range(st.current.start, st.current.end),
-    ) +
-    col(
-      412,
-      st.longest.len,
-      "Longest Streak",
-      range(st.longest.start, st.longest.end),
-    ) +
-    `<line x1="165" y1="65" x2="165" y2="165" stroke="var(--border)"/><line x1="330" y1="65" x2="330" y2="165" stroke="var(--border)"/>` +
-    `<text x="470" y="195" text-anchor="end" class="sub">Updated ${new Date().toISOString().slice(0, 10)}</text>`;
-  return card(495, 210, `${USER} contribution streak`, body);
+function statsSvg(items) {
+  const w = 830,
+    h = 92,
+    colW = w / items.length;
+  const cells = items
+    .map(([label, v], i) => {
+      const cx = colW * i + colW / 2;
+      return `<text x="${cx}" y="45" text-anchor="middle" class="num">${fmt(v)}</text><text x="${cx}" y="70" text-anchor="middle" class="sub">${label}</text>`;
+    })
+    .join("");
+  const lines = `<line x1="10" y1="1" x2="${w - 10}" y2="1" stroke="var(--line)"/><line x1="10" y1="${h - 1}" x2="${w - 10}" y2="${h - 1}" stroke="var(--line)"/>`;
+  return svg(w, h, `${USER} GitHub stats`, lines + cells);
 }
 
 // ---------- main ----------
@@ -243,29 +281,30 @@ for (const r of repos) {
   }
 }
 const langs = [...langMap.values()].sort((a, b) => b.size - a.size);
-const st = streaks(contrib.days);
+const act = activity(contrib.days);
+const since = new Date(profile.createdAt).getUTCFullYear();
 
 await mkdir(OUT, { recursive: true });
 await writeFile(
   `${OUT}/stats.svg`,
-  statsSvg(profile, { stars, commits: contrib.commits, repos: repos.length }),
+  statsSvg([
+    ["Stars earned", stars],
+    ["Commits", contrib.commits],
+    ["Pull requests", profile.pullRequests.totalCount],
+    ["Issues", profile.issues.totalCount],
+    ["Repositories", repos.length],
+    ["Followers", profile.followers.totalCount],
+  ]),
 );
 await writeFile(`${OUT}/languages.svg`, langsSvg(langs));
-await writeFile(
-  `${OUT}/streak.svg`,
-  streakSvg(contrib.total, st, profile.createdAt),
-);
+await writeFile(`${OUT}/activity.svg`, activitySvg(contrib.total, since, act));
 console.log(
-  JSON.stringify(
-    {
-      stars,
-      commits: contrib.commits,
-      repos: repos.length,
-      total: contrib.total,
-      streak: st,
-      top: langs.slice(0, 6).map((l) => l.name),
-    },
-    null,
-    1,
-  ),
+  JSON.stringify({
+    stars,
+    commits: contrib.commits,
+    repos: repos.length,
+    total: contrib.total,
+    act,
+    top: langs.slice(0, 6).map((l) => l.name),
+  }),
 );

@@ -16,15 +16,6 @@
   <a href="mailto:krshanto2005@gmail.com">Email</a>
 </p>
 
-<p align="center">
-  <img src="assets/stats.svg" alt="GitHub stats" width="49%" />
-  <img src="assets/languages.svg" alt="Most used languages" width="49%" />
-</p>
-
-<p align="center">
-  <img src="assets/streak.svg" alt="Contribution streak" width="49%" />
-</p>
-
 I am a self-taught software engineer from Dhaka, Bangladesh, focused on building production web applications and business systems.
 
 My background is in full-stack product development with TypeScript, React, Next.js, Node.js, and PostgreSQL. I am now going deeper into backend engineering, Rust, networking, real-time systems, infrastructure, and developer tooling.
@@ -82,3 +73,12 @@ These are selected client systems where I worked across product flows, data mode
 I write about software engineering, backend systems, Rust, networking, real-time applications, infrastructure, open source, and lessons from projects I am actively building.
 
 Read my work on [Dev.to](https://dev.to/shantodotdev), follow me on [LinkedIn](https://www.linkedin.com/in/krshanto/), or visit [shanto.avensyn.com](https://shanto.avensyn.com).
+
+<p align="center">
+  <img src="assets/activity.svg" alt="Contribution activity" width="410" />
+  <img src="assets/languages.svg" alt="Most used languages" width="410" />
+</p>
+
+<p align="center">
+  <img src="assets/stats.svg" alt="GitHub stats" width="830" />
+</p>

@@ -76,6 +76,9 @@ Read my work on [Dev.to](https://dev.to/shantodotdev), follow me on [LinkedIn](h
 
 <p align="center">
   <img src="assets/activity.svg" alt="Contribution activity" width="410" />
+</p>
+
+<p align="center">
   <img src="assets/languages.svg" alt="Most used languages" width="410" />
 </p>
 
